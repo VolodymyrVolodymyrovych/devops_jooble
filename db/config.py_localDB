@@ -1,0 +1,4 @@
+host = "192.168.43.236"
+user = "vova_ops"
+password = "1234"
+db_name = "ops_db"
