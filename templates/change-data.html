@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Working with Database
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+        <h3>Change data</h3>
+        <form method="post">
+                <input type="text" name="id" id="id" class="form-control" placeholder="ID of row which you want to change"><br>
+		<input type="text" name="first_name" id="first_name" class="form-control" placeholder="change the first name"><br>
+                <input type="text" name="second_name" id="second_name" class="form-control" placeholder="change the second name"><br>
+		<input type="submit" class="btn btn-success" value="Change"><br>
+        </form>
+
+{% endblock %}
+

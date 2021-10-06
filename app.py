@@ -6,6 +6,7 @@ from sqlalchemy import (
     Integer,
     Date,
     ForeignKey,
+    delete
 )
 from sqlalchemy.orm import relationship
 
@@ -28,6 +29,7 @@ class User(db.Model):
 @app.route('/')
 @app.route('/home')
 def index():
+    if request
     return render_template("index.html")
 
 #def userr():
@@ -43,10 +45,54 @@ def define_data():
     return render_template("define-data.html")
 
 
-@app.route('/users/<int:id>')
-def userr_current(id):
-    users = db.session.query(User).get(id)
-    return render_template("user_current.html", users=users)
+@app.route('/users_all')
+def users_all():
+    users = db.session.query(User).all()
+    return render_template("users_all.html", users=users)
+
+
+@app.route('/delete-data', methods=['POST', 'GET'])
+def delete_data():
+    if request.method == "POST":
+        id_del = request.form['id']
+        users = db.session.query(User).filter_by(id=id_del).delete()
+        db.session.commit()
+        users = db.session.query(User).all()
+        return render_template("users_all.html", users=users)
+    return render_template("delete-data.html")
+
+
+@app.route('/add-data', methods=['POST', 'GET'])
+def add_data():
+    if request.method == "POST":
+        first_name_ = request.form['first_name']
+        second_name_ = request.form['second_name']
+        users = User(first_name=first_name_, second_name=second_name_)
+        try:
+            db.session.add(users)
+            db.session.commit()
+            return redirect("/")
+        except:
+            print("Error with adding data to database")
+    all = db.session.query(User).all()
+    return render_template("add-data.html", users=all)
+
+
+@app.route('/change-data', methods=['POST', 'GET'])
+def change_data():
+    if request.method == "POST":
+        id_ = request.form['id']
+        users = db.session.query(User).get(id_)
+        users.first_name = request.form['first_name']
+        users.second_name = request.form['second_name']
+        try:
+            # users = db.session.query(User).filter_by(User.id == id_).\update({User.first_name : first_name_},\{User.second_name : second_name_},\synchronize_session=False)
+
+            db.session.commit()
+            return redirect('/')
+        except:
+            print("Error related with modifying data in DB")
+    return render_template("change-data.html")
 
 if __name__ == "__main__":
     app.run(debug=False)

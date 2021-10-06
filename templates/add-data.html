@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Working with Database
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+        <h3>Add data</h3>
+        <form method="post">
+                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="first name"><br>
+		<input type="text" name="second_name" id="second_name" class="form-control" placeholder="second_name"><br>
+		<!--textarea name="first_name" id="first_name" class="form-control"></textarea><br>
+		<textarea name="second_name" id="second_name" class="form-control"></textarea><br-->
+                <input type="submit" class="btn btn-success" value="Add to DB"><br>
+        </form>
+
+{% endblock %}
+

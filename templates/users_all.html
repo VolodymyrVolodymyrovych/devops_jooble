@@ -1,3 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Working with Database
+{% endblock %}
+
+{% block body %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,18 +20,17 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <ul>
-        {% for i in users %}
+  <div class="h-100 p-5 bg-light border rounded-10">
+          <ul>
+	    {% for i in users %}
             <p>id - {{i.id}}</p>
             <p>User Name - {{i.first_name}}</p>
             <p>User surname - {{i.second_name}}</p>
             <p>------------------------</p>
+            {% endfor %} 
+          </ul>
+ 
 
-          {% endfor %}
-      </ul>
-    </div>
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  </body>
-</html>
+  </div>
+
+{% endblock %}
