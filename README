@@ -8,9 +8,6 @@ This project is Web-UI where you can find the main page:
 You will see the possibility to search data from Postgres DB, try it!!!
 Postgres DB is located in Cloud. The Provider is "DigitalOcean"
 
-Also, you have possibility to see data from the "users" page:
-- <ip>:5000/users - will show you all users
-- <ip>:5000/users/<id> - will show you user by ID
 
 The "app.py" file is main file with code. The "db/" folder responsible for creating table and inserting, adding and deleting content in DB.
 
