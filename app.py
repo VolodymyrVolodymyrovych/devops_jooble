@@ -29,7 +29,6 @@ class User(db.Model):
 @app.route('/')
 @app.route('/home')
 def index():
-    if request
     return render_template("index.html")
 
 #def userr():
