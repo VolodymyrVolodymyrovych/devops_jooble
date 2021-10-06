@@ -9,6 +9,7 @@ You will see the possibility to search data from Postgres DB, try it!!!
 Postgres DB is located in Cloud. The Provider is "DigitalOcean"
 
 
+
 The "app.py" file is main file with code. The "db/" folder responsible for creating table and inserting, adding and deleting content in DB.
 
 
