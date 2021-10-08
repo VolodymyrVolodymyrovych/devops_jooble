@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Clone my "$GITHUB_REPOSITORY" repository
+      - name: Clone my "${GITHUB_REPOSITORY}" repository
         uses: actions/checkout@v2
 
 
