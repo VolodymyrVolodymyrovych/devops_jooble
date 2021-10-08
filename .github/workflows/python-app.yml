@@ -1,6 +1,6 @@
 name: Python flask-application
 env:
-  DEPLOY_PACKAGE_NAME    : "vkk_flask_app_${{ github.rsa }}.zip"
+  DEPLOY_PACKAGE_NAME : "version-${{ github.rsa }}"
 
 on:
   push:
@@ -37,6 +37,6 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        args: "[INFO] The ${{ env.DEPLOY_PACKAGE_NAME }} build is created successfully."
+        args: "[INFO] The build is created successfully - ${{ env.DEPLOY_PACKAGE_NAME }}"
         photo: tests/github.png
         
