@@ -1,6 +1,6 @@
 name: Python flask-application
 env:
-  DEPLOY_PACKAGE_NAME : "version-${{ GITHUB_SHA }}"
+  DEPLOY_PACKAGE_NAME : "version-${{ github.sha }}"
 
 on:
   push:
