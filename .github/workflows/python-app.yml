@@ -30,6 +30,16 @@ jobs:
     - name: Create a .zip package
       run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
       
+    - name: Creating Artifacts and putting to dewnloads folder
+      run: |
+          mkdir downloads
+          mv *.zip downloads
+          
+    - name: Use the upload Artifact GitHub Action
+      uses: actions/upload-artifact@v2
+      with:
+          name: assets-for-download
+          path: downloads
       
     - uses: actions/checkout@master
     - name: send custom message with args
