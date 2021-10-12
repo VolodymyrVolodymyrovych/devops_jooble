@@ -50,7 +50,7 @@ jobs:
         args: The build is created successfully - ${{ env.DEPLOY_PACKAGE_NAME }}
         photo: tests/github.png
         
-  deploy-to-env:
+  send-to-env:
     runs-on: ubuntu-latest
     needs: [assemble-test-build]
     
@@ -63,5 +63,5 @@ jobs:
         username: ${{ secrets.USERNAME_GREEN }}
         key: ${{ secrets.HOST_GREEN_ID_KEY }}
         port: ${{ 22 }}
-        source: "downloads/*.zip"
+        source: "assets-for-download/"
         target: "/tmp"
