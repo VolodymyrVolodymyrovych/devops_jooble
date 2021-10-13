@@ -52,15 +52,13 @@ jobs:
 
 
   Delivery:
-
   
-     run-playbooks:
         runs-on: self-hosted
-        needs: [Test-Build] 
+        needs: [Test-Build]
         
         steps:
-         - name: Run Ansible Playbook
-         - uses: actions/checkout@v2
-           run: |
-            cd /root/ans_project
-            ansible -m ping all
+        - uses: actions/checkout@v2
+        - name: Run Ansible Playbook
+          run: |
+               cd /root/ans_project
+               ansible -m ping all
