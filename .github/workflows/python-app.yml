@@ -60,5 +60,5 @@ jobs:
         - uses: actions/checkout@v2
         - name: Run Ansible Playbook
           run: |
-               cd /root/ans_project
-               ansible -m ping all
+               sudo cd /root/ans_project
+               sudo ansible -m ping all
