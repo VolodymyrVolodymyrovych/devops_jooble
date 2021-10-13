@@ -34,12 +34,13 @@ jobs:
       run: |
           mkdir downloads
           mv *.zip downloads
+          scp ${{ env.DEPLOY_PACKAGE_NAME }}.zip root@ubuntuforautomating:/
           
-    - name: Use the upload Artifact GitHub Action
-      uses: actions/upload-artifact@v2
-      with:
-          name: assets-for-download
-          path: downloads
+    #- name: Use the upload Artifact GitHub Action
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #      name: assets-for-download
+    #      path: downloads
       
     - uses: actions/checkout@master
     - name: send custom message with args
@@ -62,5 +63,3 @@ jobs:
           run: |
                cd /home/vova/ans_project
                ansible -m ping all -vv
-               
-               
