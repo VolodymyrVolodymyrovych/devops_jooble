@@ -9,7 +9,7 @@ on:
     branches: [ master ]
 
 jobs:
-  assemble-test-build:
+  Test-Build:
 
     runs-on: ubuntu-latest
 
@@ -49,3 +49,18 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         args: The build is created successfully - ${{ env.DEPLOY_PACKAGE_NAME }}
         photo: tests/github.png
+
+
+  Delivery:
+
+  
+     run-playbooks:
+        runs-on: self-hosted
+        needs: [Test-Build] 
+        
+        steps:
+         - name: Run Ansible Playbook
+         - uses: actions/checkout@v2
+           run: |
+            cd /root/ans_project
+            ansible -m ping all
