@@ -69,9 +69,8 @@ jobs:
                ansible -m ping all -vv
              
         - name: Download the artifact
-        - uses: actions/download-artifact@v2
+          uses: actions/download-artifact@v2
           with:
               name: assets-for-download
               path: downloads
               
-  
