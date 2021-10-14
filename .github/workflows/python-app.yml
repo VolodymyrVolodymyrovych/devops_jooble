@@ -68,10 +68,9 @@ jobs:
                cd /home/vova/ans_project
                ansible -m ping all -vv
              
-          
-        #- name: Download the artifact
-        #- uses: actions/download-artifact@v2
-        #  with:
-        #      name: assets-for-download
-        #      path: downloads
+        - name: Download the artifact
+        - uses: actions/download-artifact@v2
+          with:
+              name: assets-for-download
+              path: downloads
 
