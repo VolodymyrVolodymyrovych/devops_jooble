@@ -74,3 +74,4 @@ jobs:
           run: |
                cd /home/vova/ans_project
                ansible-playbook first-deploy.yml --limit web-green,web-blue
+
