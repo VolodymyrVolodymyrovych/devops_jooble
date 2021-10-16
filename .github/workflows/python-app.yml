@@ -69,7 +69,7 @@ jobs:
               name: assets-for-download
               path: downloads
 
-        - uses: actions/checkout@v2
+        #- uses: actions/checkout@v2
         - name: Run Ansible Playbook
           run: |
                cd /home/vova/ans_project
