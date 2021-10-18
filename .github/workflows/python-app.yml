@@ -81,3 +81,4 @@ jobs:
                cd /home/vova/ans_project
                # ansible-playbook first-deploy.yml --limit web-green,web-blue
                ansible-playbook updating-deploys.yml --limit web-blue
+               ansible-playbook playbook-haproxy-blue.yml
