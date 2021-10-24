@@ -29,7 +29,7 @@ jobs:
     
     - name: Test API
       run: |
-              ::set-env name=RESULT_OF_TEST::$(pytest test.py -vvv)
+             echo ::set-env name=RESULT_OF_TEST::$(pytest test.py -vvv)
       
     - uses: actions/checkout@master
     - name: send custom message with args
