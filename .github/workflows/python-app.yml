@@ -18,15 +18,15 @@ jobs:
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
-        python-version: 3.6
+        python-version: 3.9
      
 
     - name: log untrusted output
       run: |
 
-        # enable workflow command processing
-        echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
-    
+        # disable command workflow processing
+        echo "::stop-commands::`echo -n ${{ github.token }} | sha256sum | head -c 64`"
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
