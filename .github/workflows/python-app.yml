@@ -35,8 +35,8 @@ jobs:
     
     - name: Test API
       run: |
-            pytest test.py -vvv | tee test.log
-            echo "MESS_FOR_TEL=$(cat test.log)" >> $GITHUB_ENV
+            PYTEST=$(pytest test.py -vvv)
+            echo "MESS_FOR_TEL=$PYTEST" >> $GITHUB_ENV
             
             
     - uses: actions/checkout@master
