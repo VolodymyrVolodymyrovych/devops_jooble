@@ -19,7 +19,13 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    
+     
+
+    - name: log untrusted output
+      run: |
+
+        # enable workflow command processing
+        echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
     
     - name: Install dependencies
       run: |
@@ -30,14 +36,16 @@ jobs:
     - name: Test API
       run: |
             pytest test.py -vvv | tee test.log
-            cat test.log >> $GITHUB_ENV
+            echo "MESS_FOR_TEL=$(cat test.log)" >> $GITHUB_ENV
+            
+            
     - uses: actions/checkout@master
     - name: send custom message with args
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        args: Tests passed, please check - ${{ env.GITHUB_ENV }}
+        args: Tests passed, please check - ${{ env.MESS_FOR_TEL }}
         
 
     - name: Create a .zip package
