@@ -35,9 +35,7 @@ jobs:
     
     - name: Test API
       run: |
-            PYTEST=$(pytest test.py -vvv)
-            echo "MESS_FOR_TEL=$PYTEST" >> $GITHUB_ENV
-            
+            pytest test.py -vvv >> $GITHUB_ENV
             
     - uses: actions/checkout@master
     - name: send custom message with args
@@ -45,7 +43,7 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        args: Tests passed, please check - ${{ env.MESS_FOR_TEL }}
+        args: Tests passed, please check - ${{ env.GITHUB_ENV }}
         
 
     - name: Create a .zip package
