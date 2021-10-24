@@ -29,7 +29,8 @@ jobs:
     
     - name: Test API
       run: |
-            echo "RESULT_OF_TEST=pytest test.py -vvv" >> $GITHUB_ENV
+            pytest test.py -vvv | tee test.log
+            echo "RESULT_OF_TEST=$(cat test.log)" >> $GITHUB_ENV
     - uses: actions/checkout@master
     - name: send custom message with args
       uses: appleboy/telegram-action@master
