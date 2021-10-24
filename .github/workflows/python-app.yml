@@ -30,14 +30,14 @@ jobs:
     - name: Test API
       run: |
             pytest test.py -vvv | tee test.log
-            echo "RESULT_OF_TEST=$(cat test.log)" >> $GITHUB_ENV
+            cat test.log >> $GITHUB_ENV
     - uses: actions/checkout@master
     - name: send custom message with args
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        args: Tests passed, please check - ${{ env.RESULT_OF_TEST }}
+        args: Tests passed, please check - ${{ env.GITHUB_ENV }}
         
 
     - name: Create a .zip package
