@@ -36,7 +36,7 @@ jobs:
     - name: Test API
       run: |
             pytest test.py -vvv | tee test.log
-            echo "/home/runner/work/devops_jooble/devops_jooble/test.log" >> $GITHUB_ENV
+            echo "TEST_RESULTS=/home/runner/work/devops_jooble/devops_jooble/test.log" >> $GITHUB_ENV
             
     - uses: actions/checkout@master
     - name: send custom message with args
