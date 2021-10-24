@@ -17,6 +17,8 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 app = Flask(__name__)
+client = app.test_client()
+
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 

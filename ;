@@ -1,0 +1,22 @@
+import requests
+import logging
+
+from bs4 import BeautifulSoup
+
+url = "http://3.142.92.23:5000/define-data"
+
+data = {"id": 10}
+
+response = requests.post(url, data=data)
+
+
+a = response.text
+print (a)
+print('--------------------------------------------')
+
+soup = BeautifulSoup(a, 'html.parser')
+
+items = soup.find_all('<div', class_='')
+
+print(items)
+
