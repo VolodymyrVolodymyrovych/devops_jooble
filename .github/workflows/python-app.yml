@@ -34,10 +34,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: Test API
-      #run: echo "TEST_RESULTS=$(pytest test.py -vvv)" >> $GITHUB_ENV
+      run: echo "TEST_RESULTS=$(pytest test.py -vvv)" >> $GITHUB_ENV
       #run: echo ::set-output name=TEST_RESULTS::"$(pytest test.py -vvv)"
-      run: pytest test.py -vvv | tee test.log
-      
             
     - uses: actions/checkout@master
     - name: send custom message with args
