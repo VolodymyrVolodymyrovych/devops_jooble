@@ -41,7 +41,7 @@ jobs:
               grep -i failed test.log && 
               OUTPUT=$('$?') &&
               echo "::set-output name=OUTPUT::$OUTPUT"
-              echo ${ steps.main.outputs.OUTPUT }
+              echo ${{ OUTPUT }}
     - name: Check testing stage    
       if: steps.main.outputs.OUTPUT == 0
       run: exit 0     
