@@ -12,7 +12,8 @@ jobs:
   Test-Build:
 
     runs-on: ubuntu-latest
-
+    env:
+         TEST_RESULTS: $(cat test.log)
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
@@ -34,7 +35,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: Test API
-      run: echo "TEST_RESULTS=$(pytest test.py -vvv)" >> $GITHUB_ENV
+      run: pytest test.py -vvv | tee test.log
       #run: echo ::set-output name=TEST_RESULTS::"$(pytest test.py -vvv)" 
             
     - uses: actions/checkout@master
