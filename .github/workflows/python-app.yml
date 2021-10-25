@@ -39,7 +39,7 @@ jobs:
               python3 app.py &
               pytest test.py -vvv | tee test.log
               grep -i failed test.log
-              if [ $? -eq 1 ]; then exit 1; else exit 0; fi
+              if [ $? -eq 1 ]; then exit 0; else exit 1; fi
       #run: echo ::set-output name=TEST_RESULTS::"$(pytest test.py -vvv)" 
             
     - uses: actions/checkout@master
