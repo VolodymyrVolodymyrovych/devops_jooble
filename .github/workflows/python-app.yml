@@ -39,6 +39,7 @@ jobs:
               python3 app.py &
               pytest test.py -vvv | tee test.log
               ls -l
+              cat test.log
               grep -i failed test.log
               if [ $? -eq 0 ]; then echo "it's not OK" ; else echo "it's ok" ; fi
       #run: echo ::set-output name=TEST_RESULTS::"$(pytest test.py -vvv)" 
