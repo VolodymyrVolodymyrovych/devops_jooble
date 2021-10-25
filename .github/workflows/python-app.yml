@@ -35,7 +35,8 @@ jobs:
     
     - name: Test API
       #run: echo "TEST_RESULTS=$(pytest test.py -vvv)" >> $GITHUB_ENV
-      run: echo ::set-output name=TEST_RESULTS::"$(pytest test.py -vvv)"
+      #run: echo ::set-output name=TEST_RESULTS::"$(pytest test.py -vvv)"
+      run: pytest test.py -vvv | tee test.log
       
             
     - uses: actions/checkout@master
@@ -44,7 +45,7 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: Tests passed, please check - ${{ steps.vars.outputs.TEST_RESULTS }}
+        message: Tests passed, please check - ${{ secrets.TEST }}
         
 
     - name: Create a .zip package
