@@ -36,7 +36,7 @@ jobs:
     - name: Test API
       run: |
             pytest test.py -vvv | tee test.log
-            echo "TEST_RESULTS=$(cat /home/runner/work/devops_jooble/devops_jooble/test.log)" >> $GITHUB_ENV
+            #echo "TEST_RESULTS=$(cat /home/runner/work/devops_jooble/devops_jooble/test.log)" >> $GITHUB_ENV
             
     - uses: actions/checkout@master
     - name: send custom message with args
@@ -44,7 +44,7 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: Tests passed, please check - ${{ env.TEST_RESULTS }}
+        message: Tests passed, please check - #${{ env.TEST_RESULTS }}
         
 
     - name: Create a .zip package
