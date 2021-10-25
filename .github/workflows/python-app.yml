@@ -39,10 +39,14 @@ jobs:
               python3 app.py &
               pytest test.py -vvv | tee test.log
               grep -i failed test.log
-              echo ::set-output name=TEST_RESULTS::"$($?)"
-               
-              echo ${{ env.TEST_RESULTS }}     
-
+              OUTPUT=$(grep -i failed test.log; $?) &&
+              echo "::set-output name=OUTPUT::$OUTPUT" 
+      
+    - name: checck 
+      if: steps.main.outputs.OUTPUT == 0
+      run: exit 0
+      
+      
       #grep -i failed test.log
       #echo "$?"
       #if [ "$?" -eq 0 ]; then echo "it's not OK" ; else echo "it's ok" ; fi
