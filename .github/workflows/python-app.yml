@@ -34,7 +34,9 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: Test API
-      run: echo "TEST_RESULTS=$(pytest test.py -vvv)" >> $GITHUB_ENV
+      #run: echo "TEST_RESULTS=$(pytest test.py -vvv)" >> $GITHUB_ENV
+      run: echo ::set-output name=TEST_RESULTS::"pytest test.py -vvv"
+      
             
     - uses: actions/checkout@master
     - name: send custom message with args
@@ -42,7 +44,7 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: Tests passed, please check - ${{ env.TEST_RESULTS }}
+        message: Tests passed, please check - ${{ steps.vars.outputs.TEST_RESULTS }}
         
 
     - name: Create a .zip package
