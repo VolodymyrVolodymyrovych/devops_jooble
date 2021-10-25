@@ -12,7 +12,7 @@ def test_check_200():
         assert res.status_code == 200
 
 def test_define_data():
-    url = "http://localhost:5000/define-data"
+    url = "http://3.142.92.23:5000/define-data"
 
     data = {"id": 15}
 
@@ -35,7 +35,7 @@ def test_define_data():
 
 
 def test_add_data():
-    url = "http://localhost:5000/add-data"
+    url = "http://3.142.92.23:5000/add-data"
 
     data = {"first_name" : "test", "second_name": "test"}
 
@@ -50,7 +50,7 @@ def test_add_data():
 
 def test_delete_data():
 
-    url = "http://localhost:5000/users_all"
+    url = "http://3.142.92.23:5000/users_all"
 
     response = requests.get(url)
     a = response.text
@@ -63,7 +63,7 @@ def test_delete_data():
     item = item[1]
     item = int(re.sub('</p>', '', item))
 
-    url_to_del = "http://localhost:5000/delete-data"
+    url_to_del = "http://3.142.92.23:5000/delete-data"
 
     data = {"id": item}
     request_del = requests.post(url_to_del, data=data)
