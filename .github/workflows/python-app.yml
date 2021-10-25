@@ -37,15 +37,10 @@ jobs:
     - name: Test API
       run: |
               python3 app.py &
-              pytest test.py -vvv | tee test.log &&
-              grep -i failed test.log && 
-              OUTPUT=$('$?') &&
-              echo "::set-output name=OUTPUT::$OUTPUT"
-              echo ${{ OUTPUT }}
-    - name: Check testing stage    
-      if: steps.main.outputs.OUTPUT == 0
-      run: exit 0     
-      
+              pytest test.py -vvv | tee test.log
+              grep -i failed test.log 
+              echo '$?'          
+
       #grep -i failed test.log
       #echo "$?"
       #if [ "$?" -eq 0 ]; then echo "it's not OK" ; else echo "it's ok" ; fi
