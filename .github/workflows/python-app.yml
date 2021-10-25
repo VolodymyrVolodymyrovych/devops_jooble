@@ -41,8 +41,8 @@ jobs:
               ls -l
               cat test.log
               grep -i failed test.log
-              echo $?
-              if [ $? -eq 0 ]; then echo "it's not OK" ; else echo "it's ok" ; fi
+              echo "$?"
+              if [ "$?" -eq 0 ]; then echo "it's not OK" ; else echo "it's ok" ; fi
       #run: echo ::set-output name=TEST_RESULTS::"$(pytest test.py -vvv)" 
             
     - uses: actions/checkout@master
