@@ -35,7 +35,7 @@ jobs:
     
     - name: Test API
       #run: echo "TEST_RESULTS=$(pytest test.py -vvv)" >> $GITHUB_ENV
-      run: echo ::set-output name=TEST_RESULTS::"pytest test.py -vvv"
+      run: echo ::set-input name=TEST_RESULTS::"pytest test.py -vvv"
       
             
     - uses: actions/checkout@master
