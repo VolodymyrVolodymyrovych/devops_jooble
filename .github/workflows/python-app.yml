@@ -39,7 +39,7 @@ jobs:
               python3 app.py &
               pytest test.py -vvv | tee test.log &&
               grep -i failed test.log && 
-              OUTPUT=$($?) &&
+              OUTPUT=$('$?') &&
               echo "::set-output name=OUTPUT::$OUTPUT"
               
     - name: Check testing stage    
