@@ -39,9 +39,8 @@ jobs:
               python3 app.py &
               python3 -m pytest test.py --junit-xml pytest.xml
               
-              cat /home/runner/work/devops_jooble/devops_jooble/pytest.xml >> $GITHUB_PATH
               echo 'MESSAGE_TO_TEL<<EOF' >> $GITHUB_ENV
-              cat ${{ env.GITHUB_PATH }} >> $GITHUB_ENV
+              cat "/home/runner/work/devops_jooble/devops_jooble/pytest.xml" >> $GITHUB_ENV
               echo 'EOF' >> $GITHUB_ENV
               
               
