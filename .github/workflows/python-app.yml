@@ -38,11 +38,7 @@ jobs:
       run: |
               python3 app.py &
               python3 -m pytest test.py --junit-xml pytest.xml
-              
-              echo 'MESSAGE_TO_TEL<<EOF' >> $GITHUB_ENV
-              cat "/home/runner/work/devops_jooble/devops_jooble/pytest.xml" >> $GITHUB_ENV
-              echo 'EOF' >> $GITHUB_ENV
-              
+                          
               
     - name: Upload Unit Test Results
       if: always()
@@ -78,7 +74,11 @@ jobs:
         run: |
               ls -l 
               ls -l artifacts/Unit_Test_Results/
-      
+              echo 'MESSAGE_TO_TEL<<EOF' >> $GITHUB_ENV
+              cat artifacts/Unit_Test_Results/pytest.xml >> $GITHUB_ENV
+              echo 'EOF' >> $GITHUB_ENV
+              
+              
       - uses: actions/checkout@master
       - name: send custom message with args
         uses: appleboy/telegram-action@master
