@@ -62,7 +62,12 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
           files: artifacts/**/*.xml
-    
+      
+      - name: check location
+        run: |
+              ls -l 
+              ls -l artifacts/
+      
       - uses: actions/checkout@master
       - name: send custom message with args
         uses: appleboy/telegram-action@master
@@ -70,9 +75,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: Tests passed, please check
-          message_file: artifacts/**/*.xml
+          message_file: artifacts/pytest.xml
         
-
       - name: Create a .zip package
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
       
