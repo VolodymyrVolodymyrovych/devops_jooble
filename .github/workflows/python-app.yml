@@ -39,8 +39,10 @@ jobs:
               python3 app.py &
               python3 -m pytest test.py --junit-xml pytest.xml
               
-              cat /home/runner/work/devops_jooble/devops_jooble/pytest.xml 
-      id: MESSAGE_TO_TEL
+              cat /home/runner/work/devops_jooble/devops_jooble/pytest.xml >> $GITHUB_PATH
+              echo 'MESSAGE_TO_TEL<<EOF' >> $GITHUB_ENV
+              cat ${{ env.GITHUB_PATH }} >> $GITHUB_ENV
+              echo 'EOF' >> $GITHUB_ENV
               
               
     - name: Upload Unit Test Results
@@ -84,7 +86,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Tests passed, please check - ${{ steps.MESSAGE_TO_TEL.outputs }}
+          message: Tests passed, please check - ${{ env.MESSAGE_TO_TEL }}
           #document: artifacts/Unit_Test_Results/pytest.xml
         
       - name: Create a .zip package
