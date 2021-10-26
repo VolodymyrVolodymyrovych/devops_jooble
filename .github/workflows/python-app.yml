@@ -38,8 +38,8 @@ jobs:
       run: |
               python3 app.py &
               python3 -m pytest test.py --junit-xml pytest.xml
-              echo 'MESSAGE_TO_TEL<<EOF'
-              cat artifacts/Unit_Test_Re
+              echo 'MESSAGE_TO_TEL<<EOF' >> $GITHUB_ENV 
+              cat pytest.xml >> $GITHUB_ENV
               echo 'EOF' >> $GITHUB_ENV
     
     - name: Upload Unit Test Results
