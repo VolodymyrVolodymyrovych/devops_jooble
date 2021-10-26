@@ -45,9 +45,7 @@ jobs:
       with:
           name: Unit_Test_Results #(Python ${{ matrix.python-version }})
           path: pytest.xml
-          
-    - name: Variable
-      run: |
+          run: |
             pwd
             ls -l artifacts/Unit_Test_Results/pytest.xml
             echo 'MESSAGE_TO_TEL<<EOF' >> $GITHUB_ENV 
