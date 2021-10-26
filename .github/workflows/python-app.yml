@@ -37,7 +37,7 @@ jobs:
     - name: Test API
       run: |
               python3 app.py &
-              python3 -m pytest 2_test.py --junit-xml pytest.xml
+              python3 -m pytest test.py --junit-xml pytest.xml
               
               
               #grep -i failed test.log
