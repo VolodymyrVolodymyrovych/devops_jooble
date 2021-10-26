@@ -40,7 +40,7 @@ jobs:
               python3 -m pytest test.py --junit-xml pytest.xml
               #echo 'MESSAGE_TO_TEL<<EOF' >> $GITHUB_ENV cat /home/runner/work/devops_jooble/devops_jooble/pytest.xml >> $GITHUB_ENV echo 'EOF' >> $GITHUB_ENV 
               
-              cat /home/runner/work/devops_jooble/devops_jooble/pytest.xml >> $GITHUB_ENV
+              cat /home/runner/work/devops_jooble/devops_jooble/pytest.xml >> $MESSAGE_TO_TEL
               echo Changed: ${{ env.MESSAGE_TO_TEL }}
     
     - name: Upload Unit Test Results
