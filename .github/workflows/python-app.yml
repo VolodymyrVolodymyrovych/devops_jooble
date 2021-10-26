@@ -43,7 +43,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v2
       with:
-          name: Unit Test Results (Python ${{ matrix.python-version }})
+          name: Unit_Test_Results #(Python ${{ matrix.python-version }})
           path: pytest.xml
     
   publish-test-results:
@@ -66,7 +66,7 @@ jobs:
       - name: check location
         run: |
               ls -l 
-              ls -l artifacts/
+              ls -l artifacts/Unit_Test_Results/
       
       - uses: actions/checkout@master
       - name: send custom message with args
@@ -75,7 +75,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: Tests passed, please check
-          message_file: artifacts/pytest.xml
+          message_file: artifacts/Unit_Test_Results/pytest.xml
         
       - name: Create a .zip package
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
