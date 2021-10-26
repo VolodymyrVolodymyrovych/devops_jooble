@@ -69,7 +69,8 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Tests passed, please check - ${{ env.TEST_RESULTS }}
+          message: Tests passed, please check:
+          document: artifacts/**/*.xml
         
 
       - name: Create a .zip package
