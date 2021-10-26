@@ -69,7 +69,7 @@ jobs:
               ls -l 
               ls -l artifacts/Unit_Test_Results/
               echo 'MESSAGE_TO_TEL<<EOF' >> $GITHUB_ENV
-              cat artifacts/Unit_Test_Results/pytest.xml >> $GITHUB_ENV echo 'EOF' >> $GITHUB_ENV
+              "cat artifacts/Unit_Test_Results/pytest.xml" >> $GITHUB_ENV echo 'EOF' >> $GITHUB_ENV
               
               
       - uses: actions/checkout@master
