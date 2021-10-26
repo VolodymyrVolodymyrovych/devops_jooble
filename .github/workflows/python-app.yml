@@ -45,7 +45,11 @@ jobs:
       with:
           name: Unit_Test_Results #(Python ${{ matrix.python-version }})
           path: pytest.xml
-    
+          
+    - name: Variable
+      run: |
+            echo ‘MESSAGE_TO_TEL<<EOF’ >> $GITHUB_ENV cat pytest.xml >> $GITHUB_ENV echo ‘EOF’ >> $GITHUB_ENV
+     
   publish-test-results:
     name: "Publish Unit Tests Results"
     needs: Test
@@ -74,8 +78,8 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Tests passed, please check
-          document: artifacts/Unit_Test_Results/pytest.xml
+          message: Tests passed, please check - ${{ env.MESSAGE_TO_TEL }}
+          #document: artifacts/Unit_Test_Results/pytest.xml
         
       - name: Create a .zip package
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
@@ -94,7 +98,6 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: downloads  
- 
 
       - uses: actions/checkout@master
       - name: send custom message with args
