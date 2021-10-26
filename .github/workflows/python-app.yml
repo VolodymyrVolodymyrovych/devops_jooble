@@ -37,15 +37,22 @@ jobs:
     - name: Test API
       run: |
               python3 app.py &
-              pytest test.py -vvv | tee test.log
-              grep -i failed test.log
-              OUTPUT=$(grep -i failed test.log; $?) &&
-              echo "::set-output name=OUTPUT::$OUTPUT" 
-      
-    - name: checck 
-      if: steps.main.outputs.OUTPUT == 0
-      run: exit 0
-      
+              python3 -m pytest 2_test.py --junit-xml pytest.xml
+              
+              
+              #grep -i failed test.log
+              #OUTPUT=$(grep -i failed test.log; $?) &&
+              #echo "::set-output name=OUTPUT::$OUTPUT" 
+              #- name: checck 
+              #  if: steps.main.outputs.OUTPUT == 0
+              #  run: exit 0
+              
+    - name: Upload Unit Test Results
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+          name: Unit Test Results (Python ${{ matrix.python-version }})
+          path: pytest.xml
       
       #grep -i failed test.log
       #echo "$?"
