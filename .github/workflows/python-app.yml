@@ -48,7 +48,7 @@ jobs:
           
     - name: Variable
       run: |
-            echo ‘MESSAGE_TO_TEL<<EOF’ >> $GITHUB_ENV cat pytest.xml >> $GITHUB_ENV echo ‘EOF’ >> $GITHUB_ENV
+            echo ‘MESSAGE_TO_TEL<<EOF’ >> $GITHUB_ENV "vasya" >> $GITHUB_ENV echo ‘EOF’ >> $GITHUB_ENV
      
   publish-test-results:
     name: "Publish Unit Tests Results"
