@@ -75,7 +75,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: Tests passed, please check
-          message_file: artifacts/Unit_Test_Results/pytest.xml
+          document: artifacts/Unit_Test_Results/pytest.xml
         
       - name: Create a .zip package
         run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
